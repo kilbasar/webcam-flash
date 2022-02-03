@@ -15,19 +15,23 @@ var pretty_colors =
     "PaleTurquoise", "LightSteelBlue", "PowderBlue", "LightBlue",
     "LightSlateGray", "SlateGray", "DarkSlateGray", "Black"
 ];
-function makeButtons() {
-    pretty_colors.forEach(function (color_name, index) {
+function makePage() {
+    pretty_colors.forEach(function (color_name, index)
+    {
         var new_button=document.createElement("button");
         new_button.innerHTML = color_name;
         new_button.style.backgroundColor = color_name;
         new_button.onclick = function()
         {
-            var col = document.getElementById("body");
-            col.style.backgroundColor = color_name;
+            document.getElementById("body").style.backgroundColor = color_name;
         };
         var body = document.getElementsByTagName("body")[0];
         body.appendChild(new_button);
     });
+    urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('color')) {
+        document.getElementById("body").style.backgroundColor = urlParams.get('color');
+    }
 }
 </script>
 <style type='text/css'>
@@ -39,5 +43,5 @@ button {
 }
 </style>
 </head>
-<body id='body' onload="makeButtons();"></body>
+<body id='body' onload="makePage();"></body>
 </html>
