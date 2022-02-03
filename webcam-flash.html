@@ -9,13 +9,23 @@ var pretty_colors =
     "White", "Snow", "HoneyDew", "MintCream", "Azure", "AliceBlue", "GhostWhite",
     "SeaShell", "Beige", "OldLace", "FloralWhite", "Ivory", "AntiqueWhite", "Linen",
     "LavenderBlush", "MistyRose", "Gainsboro", "Cornsilk", "BlanchedAlmond", "Bisque",
-    "NavajoWhite", "Wheat", "Goldenrod", "Gold", "Yellow", "LightYellow", "LemonChiffon",
+    "NavajoWhite", "Wheat", "Gold", "Yellow", "LightYellow", "LemonChiffon", "DarkKhaki",
+    "Goldenrod", "DarkGoldenrod", "Peru", "Chocolate", "SaddleBrown", "Sienna", "Maroon",
     "LightGoldenrodYellow", "PapayaWhip", "Pink", "LightPink", "LightSalmon", "Coral",
     "Moccasin", "PeachPuff", "Khaki", "Lavender", "Thistle", "Plum", "LightCyan",
     "PaleTurquoise", "LightSteelBlue", "PowderBlue", "LightBlue",
+    "MediumBlue", "DarkBlue", "Navy", "MidnightBlue", "Purple", "Indigo", "DarkSlateBlue",
+    "Silver", "DarkGray", "Gray", "DimGray",
     "LightSlateGray", "SlateGray", "DarkSlateGray", "Black"
 ];
 function makePage() {
+    urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('color')) {
+        document.getElementById("body").style.backgroundColor = urlParams.get('color');
+    }
+    if (urlParams.has('nobuttons')) {
+        return;
+    }
     pretty_colors.forEach(function (color_name, index)
     {
         var new_button=document.createElement("button");
@@ -28,10 +38,6 @@ function makePage() {
         var body = document.getElementsByTagName("body")[0];
         body.appendChild(new_button);
     });
-    urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has('color')) {
-        document.getElementById("body").style.backgroundColor = urlParams.get('color');
-    }
 }
 </script>
 <style type='text/css'>
